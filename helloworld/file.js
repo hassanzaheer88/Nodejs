@@ -1,12 +1,13 @@
 const { log } = require('./math')
 const fs = require('fs') //use the files module which is pre-built in node.
+
 // create a new file
 //Sync.. means synchronous call
 
 // ./ is used for current directtory.
 
 //-------- Sync , blocking......... ------------
-//fs.writeFileSync('./test.txt',"Heythere")
+//fs.writeFileSync('./test.txt',"Heythere") //to create a new file
 
 //or we can write this. const result = fs.writeFileSync('./test.txt',"Heythere")
 

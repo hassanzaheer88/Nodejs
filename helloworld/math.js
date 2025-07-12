@@ -18,7 +18,7 @@
 
 
 // --------------------------------------
- //nonyms functions
+ //Anonyms functions
 exports.add = (a,b)=> a+b
 
 
