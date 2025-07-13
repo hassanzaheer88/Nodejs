@@ -1,0 +1,29 @@
+there are following http methods.
+1. get 2.
+
+1. get:
+when we want to get some data data from the server . 
+our browser by default does get request.
+
+2.Post:
+when you want to send data and mutate(change the data/add data in database) some data in server.
+e.g . in html forms this post request is used to send data to the server 
+
+
+3.Put:
+whwn you want to upload file or piture to the server . this put request is used.
+
+4. patch: to change something
+to change the existing entry , we use this path request.
+
+5. delete:
+if we want to delete something. delete request is used.
+
+
+
+
+
+
+
+
+
