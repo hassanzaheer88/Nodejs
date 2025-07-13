@@ -30,3 +30,8 @@
 1752276083687:/about?myname=taha&userid=1&search=dog New Request Received:
 1752276263316:/about?myname=taha&userid=1&search=dog New Request Received:
 1752276391571:/search?search_query=javascript+tic+toe+game New Request Received:
+1752426758855: GET / New Request Received:
+1752426761233: GET / New Request Received:
+1752426783453: GET /about New Request Received:
+1752427048390: GET /about New Request Received:
+1752427054968: GET /signup New Request Received:
