@@ -9,7 +9,22 @@ const app = express();
 const port =8000;
 
 // Middleware -> Plugin 
-app.use(express.urlencoded({ extended:false }));
+app.use(express.urlencoded({ extended:false })); //first this middleware will be execute.
+
+app.use( (req, res, next) => {
+    //console.log("Hello from middle ware 1");
+    // return res.json({msg: "Hello from middle ware 1"})
+    fs.appendFile('log.txt' ,` \n ${Date.now()}: ${req.ip}: ${req.method}: ${req.path} ` , (err, data) => {
+    next();         // to call the next function
+    
+    })                               
+});
+
+// app.use( (req, res, next) => {
+//     console.log("Hello from middle ware 2");
+//     // return res.end("Hey")
+//     next(); 
+// });
 
 // Routes
 
@@ -25,9 +40,9 @@ app.get('/users' , (req,res)=>{
 // Rest APIS
 
 
-// app.get('/api/users' , (req,res)=>{
-//     return res.json(users);
-// })
+app.get('/api/users' , (req,res)=>{
+    return res.json(users);
+})
 
 // app.get('/api/users/:id' , (req,res)=>{
 //     const id = Number(req.params.id);
