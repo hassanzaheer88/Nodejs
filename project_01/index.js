@@ -85,9 +85,14 @@ app.post("/api/users", (req, res) => {
   //     // TODO: create new user
   const body = req.body;
   // console.log('Body:' , body);
+
+  if(!body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title ){
+    return res.status(400).json( { msg:"all fields are required... "});
+  }
+
   users.push({ ...body, id: users.length + 1 });
   fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
-    return res.json({ status: "success", id: users.length });
+    return res.status(201).json({ status: "success", id: users.length });
   });
 });
 
