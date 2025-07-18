@@ -38,4 +38,13 @@
  1752820800073: ::1: GET: /api/users  
  1752820804008: ::1: GET: /users  
  1752820872272: ::1: POST: /api/users  
- 1752820881251: ::1: GET: /users 
+ 1752820881251: ::1: GET: /users  
+ 1752865671512: ::1: GET: /users  
+ 1752865672967: ::1: GET: /favicon.ico  
+ 1752866024760: ::1: GET: /api/users  
+ 1752866224309: ::1: GET: /api/users/6879e7a5d3972e715c43d480  
+ 1752866464171: ::1: PATCH: /api/users/:6879e7a5d3972e715c43d480  
+ 1752866479595: ::1: PATCH: /api/users/6879e7a5d3972e715c43d480  
+ 1752866642579: ::1: GET: /users  
+ 1752866648184: ::1: DELETE: /api/users/6879e7a5d3972e715c43d480  
+ 1752866652938: ::1: GET: /users 

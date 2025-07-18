@@ -76,10 +76,12 @@ app.get("/users", async(req, res) => {
 
 // Rest APIS
 
-app.get("/api/users", (req, res) => {
-    res.setHeader("X-myname" , "piyush garg")   //custom header
+app.get("/api/users", async(req, res) => {
+    // res.setHeader("X-myname" , "piyush garg")   //custom header
 // always add "X" to custom header.
-  return res.json(users);
+  const alldbusers = await User.find({});
+
+  return res.json(alldbusers);
 });
 
 // app.get('/api/users/:id' , (req,res)=>{
@@ -102,19 +104,25 @@ app.get("/api/users", (req, res) => {
 
 app
   .route("/api/users/:id")
-  .get((req, res) => {
-    const id = Number(req.params.id);
-    const user = users.find((user) => user.id === id);
+  .get(async(req, res) => {
+    //const id = Number(req.params.id);
+    //const user = users.find((user) => user.id === id);
+
+    // using mongodb we will follow below code.
+    const user = await User.findById(req.params.id);
+
     if(!user) return res.status(404).json( { error: "user not found " })
     return res.json(user);
   })
-  .patch((req, res) => {
+  .patch(async(req, res) => {
     // TODO: Edit the user with id
-    return res.json({ status: "pending" });
+    await User.findByIdAndUpdate(req.params.id , {last_name: "changed"})
+    return res.json({ status: "success" });
   })
-  .delete(() => {
+  .delete(async(req,res) => {
     // TODO: Delete the user with id
-    return res.json({ status: "pending" });
+    await User.findByIdAndDelete(req.params.id)
+    return res.json({ status: "success" });
   });
 
 app.post("/api/users", async(req, res) => {
