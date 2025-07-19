@@ -47,4 +47,9 @@
  1752866479595: ::1: PATCH: /api/users/6879e7a5d3972e715c43d480  
  1752866642579: ::1: GET: /users  
  1752866648184: ::1: DELETE: /api/users/6879e7a5d3972e715c43d480  
- 1752866652938: ::1: GET: /users 
+ 1752866652938: ::1: GET: /users  
+ 1752956227736: ::1: GET: /api/users  
+ 1752956260212: ::1: GET: /api/users  
+ 1752956315278: ::1: POST: /api/users  
+ 1752956373731: ::1: GET: /api/users/687bfd9b2f947a4eb093e4a3  
+ 1752956408274: ::1: DELETE: /api/users/687bfd9b2f947a4eb093e4a3 
