@@ -1,9 +1,15 @@
 const express = require("express");
 const path = require("path");
+const cookieParser = require('cookie-parser')
 const {connectTomongodb} = require("./connect")
+
+const {restrictToLoggedinUserOnly,checkAuth} = require("./middlewares/auth")
+const URL = require("./models/url")
+
 const urlroute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter")
-const URL = require("./models/url")
+const userRoute = require("./routes/user")
+
  
 const app = express();
 
@@ -18,6 +24,8 @@ app.set("views" , path.resolve("./views") );
 
 app.use(express.json())
 app.use(express.urlencoded( {extended: false }))
+app.use(cookieParser());
+
 
 
 
@@ -44,9 +52,10 @@ app.use(express.urlencoded( {extended: false }))
 //         `)
 // })
 
-app.use("/url" , urlroute)
+app.use("/url" ,restrictToLoggedinUserOnly, urlroute)
+app.use( "/user" , userRoute)
+app.use( "/" ,checkAuth, staticRoute)
 
-app.use( "/" , staticRoute)
 
 
 app.get( "/url/:shortId" , async (req,res) => {
