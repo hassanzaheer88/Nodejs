@@ -3,7 +3,9 @@ const path = require("path");
 const cookieParser = require('cookie-parser')
 const {connectTomongodb} = require("./connect")
 
-const {restrictToLoggedinUserOnly,checkAuth} = require("./middlewares/auth")
+//const {restrictToLoggedinUserOnly,checkAuth} = require("./middlewares/auth")
+const {checkForAuthentication,restrictTo} = require("./middlewares/auth")
+
 const URL = require("./models/url")
 
 const urlroute = require("./routes/url");
@@ -25,7 +27,7 @@ app.set("views" , path.resolve("./views") );
 app.use(express.json())
 app.use(express.urlencoded( {extended: false }))
 app.use(cookieParser());
-
+app.use(checkForAuthentication);
 
 
 
@@ -52,9 +54,9 @@ app.use(cookieParser());
 //         `)
 // })
 
-app.use("/url" ,restrictToLoggedinUserOnly, urlroute)
+app.use("/url" ,restrictTo(["NORMAL"],["ADMIN"]), urlroute)
 app.use( "/user" , userRoute)
-app.use( "/" ,checkAuth, staticRoute)
+app.use( "/" , staticRoute)
 
 
 

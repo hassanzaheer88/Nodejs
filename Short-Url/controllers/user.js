@@ -25,10 +25,10 @@ async function handleUserlogin(req,res) {
     //res.cookie('uid' ,sessionid);
 
     const token = setUser(user);
-    //res.cookie('uid' ,token);
-    //return res.redirect("/");
+    res.cookie('token' ,token);
+    return res.redirect("/");
 
-    return res.json({ token });
+    // return res.json({ token });
 
 }
 
